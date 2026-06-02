@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turn Platform — Quick Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --surface-2: #f2f1ee;
+    --border: #e2e0da;
+    --border-strong: #c8c5bc;
+    --text: #1a1917;
+    --text-2: #5c5a55;
+    --text-3: #9b9892;
+    --accent: #2a5bd7;
+    --accent-bg: #eef2fd;
+    --accent-text: #1a3d9e;
+    --warn-bg: #fef3e2;
+    --warn-border: #f5c842;
+    --warn-text: #7a4f00;
+    --tip-bg: #e6f7f0;
+    --tip-border: #4dc89a;
+    --tip-text: #0a5c3e;
+    --danger-bg: #feeaea;
+    --danger-border: #f5a0a0;
+    --danger-text: #8b0000;
+    --purple-bg: #f0eeff;
+    --purple-text: #4630b8;
+    --teal-bg: #e0f5ef;
+    --teal-text: #0d6b50;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+  }
+  .site-header h1 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .site-header p {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-top: 2px;
+  }
+  .header-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 74px;
+    z-index: 99;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-bar-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 16px 11px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 28px 24px 60px;
+  }
+  .sheet { display: none; }
+  .sheet.visible { display: block; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-3);
+    flex-shrink: 0;
+  }
+
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 9px; }
+  .step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .step-num {
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    margin-top: 1px;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+  .step-arrow {
+    min-width: 22px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 3px;
+    color: var(--text-3);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .step-text code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--accent-text);
+  }
+
+  /* ── ALERTS ── */
+  .warn, .tip, .danger {
+    border-radius: var(--radius-sm);
+    padding: 10px 13px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 12px;
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+  }
+  .warn { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text); }
+  .tip { background: var(--tip-bg); border: 1px solid var(--tip-border); color: var(--tip-text); }
+  .danger { background: var(--danger-bg); border: 1px solid var(--danger-border); color: var(--danger-text); }
+  .alert-icon { flex-shrink: 0; font-size: 15px; margin-top: 0px; }
+
+  /* ── DIVIDER ── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+  /* ── GRID 2 ── */
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .grid-cell {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 13px;
+  }
+  .grid-cell-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .grid-cell-title.danger { color: #cc2222; background:none; border:none; border-radius:0; padding:0; margin-bottom:4px; font-size:12.5px; }
+  .grid-cell p {
+    font-size: 12.5px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  /* ── PILLS ── */
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 0 2px;
+    vertical-align: middle;
+  }
+  .pill-purple { background: var(--purple-bg); color: var(--purple-text); }
+  .pill-teal { background: var(--teal-bg); color: var(--teal-text); }
+  .pill-accent { background: var(--accent-bg); color: var(--accent-text); }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    margin: 24px 0 10px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── INLINE NOTE ── */
+  .note {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 12px;
+    line-height: 1.55;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 560px) {
+    .main { padding: 20px 16px 48px; }
+    .site-header { padding: 16px 16px 14px; }
+    .tab-bar { padding: 0 16px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .card { padding: 15px 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Turn Platform — Quick Reference</h1>
+    <p>Cheat sheets from coaching sessions &middot; tap a topic below</p>
+  </div>
+</header>
+
+<nav class="tab-bar" role="tablist">
+  <div class="tab-bar-inner">
+    <button class="tab-btn active" role="tab" aria-selected="true"  onclick="show('auth',this)">Client Authorizations</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="show('packages',this)">Packages &amp; Pricing</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="show('automations',this)">Automations</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="show('emails',this)">Email Library</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="show('misc',this)">Other Tips</button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ══════════════════════════════════════════
+       SHEET 1 — CLIENT AUTHORIZATIONS
+  ══════════════════════════════════════════ -->
+  <div id="sheet-auth" class="sheet visible">
+
+    <div class="section-label">When the client wants to lock in flights but hasn't decided everything else</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Getting a partial authorization (e.g. flights only)
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the trip. For every item the client is <strong>not</strong> ready to pay yet, click the item → mark it <span class="pill pill-teal">choose later</span>.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Make sure the items they <em>do</em> need to authorize have a supplier assigned. Look for the <span class="pill pill-purple">purple banner</span>. No supplier assigned = no purple banner = cannot be authorized.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Publish the trip, then send the client the link via email.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Client clicks <strong>choose later</strong> on undecided items → the system skips past them → lands directly on the authorization page → they enter their credit card. Done.</div></div>
+      </div>
+      <div class="warn"><span class="alert-icon">⚠️</span><span>If an item has no supplier assigned it will <strong>not</strong> have the purple banner and cannot be authorized. Always assign a supplier first.</span></div>
+    </div>
+
+    <div class="section-label">Deleting an authorization so you can move items into a package</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        Deleting an authorization record
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the booking item that already has an authorization on it.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Scroll up to the authorization section → click the <strong>three dots (⋯)</strong> next to it.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Click <code>Delete</code>. The signed PDF saved under Documents is <em>not</em> deleted — it stays.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Now you can move the item into a package without getting the error message. After the package is set up, send the client a new authorization request.</div></div>
+      </div>
+      <div class="tip"><span class="alert-icon">💡</span><span>The original signed authorization PDF lives under <strong>Documents → Trip authorization (date)</strong>. Deleting the authorization record does not remove that PDF — you keep your paper trail.</span></div>
+    </div>
+
+    <div class="section-label">Testing the client experience</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        How to preview a trip exactly as your client sees it
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Publish the trip, then copy the published trip link.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Open an <strong>incognito / private window</strong> in your browser (Cmd+Shift+N on Mac, Ctrl+Shift+N on Windows).</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Paste the link. The system treats you as a client so you see exactly what they see — including the choose later flow.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SHEET 2 — PACKAGES & PRICING
+  ══════════════════════════════════════════ -->
+  <div id="sheet-packages" class="sheet">
+
+    <div class="section-label">Why packages exist</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        What a package does and when to create one
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">A package groups multiple bookings under <strong>one total price</strong>, so the client authorizes once instead of 20 separate times.</div></div>
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">Deposits and final balance payments are tracked at the package level — much cleaner for payment reminders.</div></div>
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">Going forward: set up the package <em>before</em> you send anything for authorization. Doing it after requires deleting authorizations first.</div></div>
+      </div>
+      <div class="warn"><span class="alert-icon">⚠️</span><span>Set up the package <strong>before</strong> the client authorizes anything. Moving authorized items requires deleting the authorizations first (see Authorizations tab).</span></div>
+    </div>
+
+    <div class="section-label">Moving items into a package</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Step-by-step: moving bookings into a package
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the trip → go to <strong>Bookings</strong>.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Click the individual booking item you want to move.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Scroll down → find <code>Change package</code> → select the target package (or create a new one).</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Repeat for each item. Leave out anything not managed by the DMC (e.g., hotels on credit card hold only).</div></div>
+      </div>
+      <div class="tip"><span class="alert-icon">💡</span><span>A warning will appear: <em>"existing entries other than payments will be cleared."</em> That is expected — click confirm to proceed.</span></div>
+    </div>
+
+    <div class="section-label">Recording a deposit</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Setting up a deposit on a package
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the package → look for <code>Itemized deposit</code> and <code>Itemized cost</code> fields at the top of the package.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Enter the deposit amount (e.g., 30% of total). The system calculates the remaining balance automatically — you don't do the math.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Add the DMC / supplier name. Now the package is ready for authorization.</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Showing itemized pricing to clients</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Workaround for showing line-item prices
+      </p>
+      <p class="note">Turn doesn't show individual line-item prices to clients on the authorization page (by design). Use this workaround instead:</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Take a <strong>screenshot</strong> of your Bookings page with all line items visible.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Attach the screenshot to your proposal email. Write something like: <em>"Here is everything included — the attached screenshot gives you the full breakdown."</em></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">The client then authorizes the single package total in Turn. Much easier than authorizing 85 separate items.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SHEET 3 — AUTOMATIONS
+  ══════════════════════════════════════════ -->
+  <div id="sheet-automations" class="sheet">
+
+    <div class="section-label">The most important rule — read this first</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Two places to edit — two very different results
+      </p>
+      <div class="grid2" style="margin-top:4px;">
+        <div class="grid-cell">
+          <p class="grid-cell-title">✅ Edit inside a trip's Automations tab</p>
+          <p>Changes apply to this one trip only. Safe for trip-specific tweaks like "Hope you loved Italy!"</p>
+        </div>
+        <div class="grid-cell" style="border-color: var(--danger-border); background: var(--danger-bg);">
+          <p class="grid-cell-title" style="color: var(--danger-text);">🚫 Library → Workflows</p>
+          <p style="color: var(--danger-text);">Changes the master template — affects <strong>every trip</strong> using this workflow. Only edit here if you intend a global change to all future trips.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Adding a workflow to a trip</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        How to add a workflow to a trip manually
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the trip → click the <strong>Automations</strong> tab.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Click <code>Add workflow</code>.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Select the workflow you want (e.g., "Booked trips automations") → click it once → it's immediately added. No extra save step needed.</div></div>
+      </div>
+      <div class="tip"><span class="alert-icon">💡</span><span>Eventually workflows will be set to auto-apply so you won't need to do this manually for every new trip.</span></div>
+    </div>
+
+    <div class="section-label">Canceling or archiving a trip</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Cleaning up tasks when you cancel a trip
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Change the trip status to <strong>Canceled</strong> or <strong>Archived</strong>.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">A dialog box appears with three options: <code>Unpublish trip</code> / <code>Deactivate automations</code> / <code>Complete tasks</code>.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Select all three → confirm. This automatically clears all open tasks at once.</div></div>
+      </div>
+      <div class="warn"><span class="alert-icon">⚠️</span><span>If you don't see this dialog box, you may have clicked through it too fast. Go back to Automations on that trip and deactivate them manually, then complete any open tasks.</span></div>
+    </div>
+
+    <div class="section-label">Hiding a trip without losing it</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        Reject vs. Delete — use Reject to hide safely
+      </p>
+      <p class="note">Instead of deleting a trip or inquiry, use <strong>Reject</strong>. The trip is hidden from clients but stays in your account. If you need it later, you can still access it and change the status back.</p>
+    </div>
+
+    <div class="section-label">Viewing tasks across all trips</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Two ways to look at your tasks
+      </p>
+      <div class="grid2">
+        <div class="grid-cell">
+          <p class="grid-cell-title">Tasks tab inside a trip</p>
+          <p>See and complete tasks for that specific trip. Good when you're working on one trip at a time.</p>
+        </div>
+        <div class="grid-cell">
+          <p class="grid-cell-title">Display → List view</p>
+          <p>Shows all your trips with their open task counts at once. Good for a daily review of everything pending.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SHEET 4 — EMAIL LIBRARY
+  ══════════════════════════════════════════ -->
+  <div id="sheet-emails" class="sheet">
+
+    <div class="section-label">The step everyone forgets</div>
+    <div class="card" style="border-color: var(--warn-border); background: var(--warn-bg);">
+      <p class="card-title" style="color: var(--warn-text);">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="color:var(--warn-text)"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span style="color:var(--warn-text);">After editing any email: you MUST click "Apply updates"</span>
+      </p>
+      <p style="font-size:13.5px; color:var(--warn-text); line-height:1.55;">
+        Clicking <code style="background:rgba(0,0,0,0.07); border-color:var(--warn-border); color:var(--warn-text);">Save and close</code> only saves the email to the library. It does <strong>not</strong> push the new version to your automations.<br><br>
+        You must also click <code style="background:rgba(0,0,0,0.07); border-color:var(--warn-border); color:var(--warn-text);">Apply updates</code> — this is a separate button that appears after you make changes. It pushes the new email to every automation that uses it.
+      </p>
+    </div>
+
+    <div class="section-label">How to find and edit an email</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Editing email templates
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Go to <strong>Library → Emails</strong>.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Search by name (e.g., "welcome home") or browse folders to find the template.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Click the email → make your edits and rewrite in your own voice.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Click <code>Apply updates</code> (not just save and close).</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text">A dialog will show which automations will be updated → confirm. Done.</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Correct order of work for getting emails and workflows live</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Do these steps in order
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Edit all email templates in <strong>Library → Emails</strong>. Rewrite them all in your own voice.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Click <code>Apply updates</code> on each one before moving to the next.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Let Kathy know you're done → she will connect the workflows to those emails.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Then add workflows to your trips (or they'll be set to auto-apply).</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Editing the welcome home survey form</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="6"/><rect x="9" y="16" width="6" height="6"/><path d="M4 7h16M4 17h16M12 8v8"/></svg>
+        Customizing the post-trip survey
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">In Library → Emails, open the welcome home email → click the "View form" link inside it. This takes you directly to the form.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Edit directly — add, remove, or reorder questions. The form auto-saves as you work.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">To <strong>remove a question:</strong> click the <strong>three dots (⋯)</strong> next to it → Delete.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">To make a question <strong>optional:</strong> click the three dots → uncheck "Required."</div></div>
+      </div>
+      <div class="tip"><span class="alert-icon">💡</span><span>Form changes are global — they update for all trips using this form. You don't have to do anything else after saving; the update trickles out automatically.</span></div>
+    </div>
+
+    <div class="section-label">Auto-save behavior</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        When does Turn auto-save?
+      </p>
+      <p class="note">Turn auto-saves almost everything — you'll see the field or name update in the top bar as you click away. <strong>The exception is emails in the library:</strong> you must click Apply updates or active automations will not get the new version.</p>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SHEET 5 — MISC
+  ══════════════════════════════════════════ -->
+  <div id="sheet-misc" class="sheet">
+
+    <div class="section-label">Currency conversion</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        When a client says the conversion looks wrong
+      </p>
+      <p class="note">The dollar figure shown in Turn's pricing section is an <em>estimate</em> based on today's rate. It is clearly labeled as a helpful estimate — not the final charge amount.</p>
+      <div class="steps">
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">If a client says it's way off, they likely did the math themselves incorrectly. Walk them through it: £1 ≈ $1.34 USD as a rough guide.</div></div>
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">The actual charge depends on the rate when the card is processed — not when they viewed the itinerary.</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Reducing an insurance quote</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Lowering the insured amount when some flights are refundable
+      </p>
+      <div class="steps">
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">If flights are fully refundable to the card (common with business class) or will get an e-credit (common with premium economy), those amounts don't need to be insured.</div></div>
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">Turn lets you manually change the trip cost to insure. Lower it to exclude refundable airfare.</div></div>
+        <div class="step"><div class="step-arrow">→</div><div class="step-text">This can significantly drop the premium. Always check refundability before quoting insurance.</div></div>
+      </div>
+      <div class="tip"><span class="alert-icon">💡</span><span>If only one insurance plan (e.g., Arch Pro Plus) appears, it's likely because the trip cost is above the threshold for other plans — not a system error.</span></div>
+    </div>
+
+    <div class="section-label">Navigation shortcut</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        The three-dot menu is your best friend
+      </p>
+      <p class="note">Almost every action in Turn is hidden behind a <strong>three-dot (⋯) menu</strong>. When you're not sure how to do something, look for three dots next to the item. That's where Delete, Edit, Reject, Move, and other actions live.</p>
+    </div>
+
+    <div class="section-label">When Finn (AI) gives a useless answer</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Skip Finn — email support directly
+      </p>
+      <p class="note">If Finn doesn't give you the answer you're looking for, don't keep trying to rephrase. Email <strong>support@turn.com</strong> directly. They respond and can answer specific how-to questions that Finn consistently misses.</p>
+    </div>
+
+    <div class="section-label">Creating forms</div>
+    <div class="card">
+      <p class="card-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        You can build forms directly in Turn
+      </p>
+      <p class="note">Turn has a built-in form builder — no third-party tools needed. Good for things like pre-trip questionnaires (e.g., collecting golf handicaps, dietary requirements, passport details). Look for Forms in the Library.</p>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.sheet').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.tab-btn').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.getElementById('sheet-' + id).classList.add('visible');
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
